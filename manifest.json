@@ -1,0 +1,10 @@
+{
+    "name": "Smart Task List",
+    "short_name": "Tasks",
+    "description": "A smart task list app with offline support and push notifications",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4a90e2",
+    "orientation": "portrait-primary"
+}

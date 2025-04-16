@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4a90e2">
+    <title>Smart Task List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Smart Task List</h1>
+            <button id="install-btn" class="hidden">Install App</button>
+            <button id="notification-btn">Enable Notifications</button>
+        </header>
+
+        <div class="task-input">
+            <input type="text" id="new-task" placeholder="Add a new task...">
+            <button id="add-task-btn">Add</button>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <div class="status-bar">
+            <p id="connection-status">Online</p>
+            <p id="tasks-count">0 tasks left</p>
+        </div>
+    </div>
+
+    <div id="install-prompt" class="hidden">
+        <div class="prompt-content">
+            <p>Add this app to your home screen for quick access!</p>
+            <div class="prompt-buttons">
+                <button id="close-prompt">Not now</button>
+                <button id="confirm-install">Install</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
